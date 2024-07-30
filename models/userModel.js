@@ -10,6 +10,9 @@ const UsuarioSchema = mongoose.Schema({
     password:{
         type: String,
         required: true
+    },privileges: {
+       type: String,
+       required: true
     }
 }, {
     timestamps: true

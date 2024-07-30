@@ -27,4 +27,4 @@ const CafeSchema = mongoose.Schema({
 )
 const Cafe = mongoose.model('Cafe', CafeSchema)
 
-module.exports = Cafe
+module.exports = Cafe;
