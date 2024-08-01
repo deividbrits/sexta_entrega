@@ -1,6 +1,12 @@
+require('dotenv').config();
 const Usuario = require('../models/userModel');
 const mongoose = require('mongoose');
 const auth = require('../middleware/authorizacion')
+const bcryptjs = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+
+
 
 exports.userRegister = async (req, res) => {
 	const { username, email, password,privileges } = req.body    
@@ -18,8 +24,13 @@ exports.userRegister = async (req, res) => {
 	} catch (error) {
 		return res.status(400).json({
 			msg: error
-		})
+            
+	    },
+        console.log(error)
+    )
+    
 	}
+c
 }
 
 
@@ -53,7 +64,9 @@ exports.userLogin = async(req, res) => {
         res.json({
             msg: "we have an error",
             error
-        })
+        },
+        console.log(error)
+    )
     }
 }
 
