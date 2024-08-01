@@ -1,6 +1,6 @@
 const Usuario = require('../models/userModel');
 const mongoose = require('mongoose');
-const auth = require('../middleware /authorizacion')
+const auth = require('../middleware/authorizacion')
 
 exports.userRegister = async (req, res) => {
 	const { username, email, password,privileges } = req.body    
