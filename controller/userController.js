@@ -73,7 +73,9 @@ exports.userLogin = async(req, res) => {
 exports.userUpdate = async (req, res) => {
    const {id,username , password, email } = req.body
    try {
-    const actualizarUsuario = await Usuario.findByIdAndUpdate (id,{username,password,email})
+    const salt = await bcryptjs.genSalt(10)
+	const hashedPassword = await bcryptjs.hash(password, salt)
+    const actualizarUsuario = await Usuario.findByIdAndUpdate (id,{username,password: hashedPassword,email})
     res.json(actualizarUsuario)
     } catch(error) {
         res.status(500).json({
