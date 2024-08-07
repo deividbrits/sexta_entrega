@@ -30,7 +30,7 @@ exports.userRegister = async (req, res) => {
     )
     
 	}
-c
+
 }
 
 
@@ -86,7 +86,7 @@ exports.userUpdate = async (req, res) => {
 }
 
 
-exports.verifyUser = auth, async (req, res) => {
+exports.verifyUser = async (req, res) => {
     try {
 	
 		const usuario = await Usuario.findById(req.user.id).select('-password')
@@ -99,3 +99,4 @@ exports.verifyUser = auth, async (req, res) => {
 	}
    
 }
+;
