@@ -36,9 +36,15 @@ exports.getAllCafe = async (req,res) => {
 
 exports.getCafeById = async (req,res) => {
  try {
-    const {id} = req.body;
-    const cafe = await Cafe.findById(id)
+    const cafeID =req.params.id;
+    console.log(cafeID)
+    const cafe = await Cafe.findById(cafeID)
+    if (cafe) {
     res.json(cafe)
+    console.log(cafe)
+}else {
+    res.status(404).json ({msj: 'cafe no encontrado'})
+}
 } catch(error) {
     res.status(500).json({
         msj: 'error al obtener cafe',
@@ -63,10 +69,14 @@ exports.updateCafeById = async (req,res) => {
 };
 
 exports.deleteCafeById = async (req,res) => {
-    const {id} = req.body 
-    try {
-        const borrarCafe = await Cafe.findByIdAndDelete (id)
+     try {
+        const cafeID = req.params.id;
+        const borrarCafe = await Cafe.findByIdAndDelete (cafeID)
+        if(borrarCafe) {
         res.json(borrarCafe)
+    }else {
+        res.status(404).json ({msj: 'cafe no encontrado'})
+    }
     } catch(error) {
         res.status(500).json({
             msj: 'error al borrar cafe',
